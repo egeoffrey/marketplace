@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>eGeoffrey Marketplace</title>
+    
+    <!-- jQuery -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    
+    <!-- Bootstrap -->
+    <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE (theme) -->
+    <script src="lib/adminlte/adminlte.js"></script>
+    <link rel="stylesheet" href="lib/adminlte/adminlte.css">
+    
+    <!-- Fonts -->
+    <link href="lib/fonts/fonts.css" rel="stylesheet">
+
+    <!-- Font Awesome (icons) -->
+    <link rel="stylesheet" href="lib/fontawesome/css/all.min.css">
+
+    <!--  js-yaml (yaml encoder/decoder) -->
+    <script src="lib/js-yaml/js-yaml.min.js"></script>
+    
+    <!-- Marketplace -->
+    <script src="marketplace.js"></script>
+
+</head>
+
+<style>
+    th.dt-center,
+    td.dt-center {
+        text-align: center;
+    }
+    
+    .center-block {
+        float: none !important
+    }
+    
+    .col-centered {
+        margin: 0 auto;
+        float: none;
+    }
+    
+    .login-box {
+        width: auto;
+    }
+</style>
+
+<body class="hold-transition login-page">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <div class="login-box">
+                <div class="login-logo">
+                    <a href="#" style="cursor: default"><b>eGeoffrey Marketplace</b><br><i class="fas fa-concierge-bell"></i></a>
+                </div>
+                <div class="card">
+                    <div class="card-body login-card-body" id="body">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+       var marketplace = new Marketplace()
+       marketplace.draw()
+    </script>
+</body>
+
+</html>
