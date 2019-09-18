@@ -4,6 +4,7 @@ class Marketplace {
         this.marketplace_url = "https://api.github.com/repos/egeoffrey/egeoffrey-marketplace/contents/marketplace"
         this.marketplace_branch = "master"
         this.manifests = []
+        this.tags = []
         this.packages_branch = "development"
         this.supported_manifest_schema = 2
         this.id = "marketplace"
@@ -44,7 +45,14 @@ class Marketplace {
                         // define tags
                         var tags = manifest["tags"].split(" ")
                         var tags_html = ""
-                        for (var tag of tags) tags_html = tags_html+'<a onClick=\'$("#'+this_class.id+'_search").val("'+tag+'"); $("#'+this_class.id+'_search").keyup()\'><span class="badge badge-info">'+tag+'</span></a>&nbsp;'
+                        for (var tag of tags) {
+                            var this_tag_html = '<a style="cursor: pointer" onClick=\'$("#'+this_class.id+'_search").val("'+tag+'"); $("#'+this_class.id+'_search").keyup()\'><span class="badge badge-info">'+tag+'</span></a>&nbsp;'
+                            if (! this_class.tags.includes(tag)) {
+                                $("#"+this_class.id+"_marketplace_tags").append(this_tag_html)
+                                this_class.tags.push(tag)
+                            }
+                            tags_html = tags_html+this_tag_html
+                        }
                         // define modules
                         var modules = []
                         if (manifest["modules"].length > 0) {
@@ -89,6 +97,7 @@ class Marketplace {
         // IDs Widget: _table
         var body = "#body"
         this.manifests = []
+        this.tags = []
         $(body).empty()
         var search_html = '\
             <div class="input-group">\
@@ -121,6 +130,7 @@ class Marketplace {
                 }
             };
         }(this));
+        $(body).append('<div><center><span id="'+this.id+'_marketplace_tags"></span></div></center><hr>')
         $(body).append('<ul class="products-list product-list-in-card pl-2 pr-2" id="'+this.id+'_marketplace"><li><i class="fas fa-spin fa-3x fa-spinner"></i> Loading marketplace...</li></ul>')
         this.load_marketplace()
     }
