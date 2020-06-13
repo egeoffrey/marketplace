@@ -1,0 +1,8 @@
+.DS_Store
+.git
+.git/
+*.autosave
+*.save
+*~
+*.pyc
+cache/
